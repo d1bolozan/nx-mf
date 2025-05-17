@@ -1,9 +1,11 @@
 import {
-  IconBulb,
-  IconCheckbox,
+  IconBuildingStore,
+  IconChartGridDots,
+  IconHome,
   IconPlus,
   IconSearch,
-  IconUser,
+  IconShoppingCart,
+  IconShoppingCartCheck,
 } from '@tabler/icons-react';
 import {
   ActionIcon,
@@ -11,25 +13,27 @@ import {
   Box,
   Code,
   Group,
+  NavLink,
   Text,
   TextInput,
   Tooltip,
-  UnstyledButton,
 } from '@mantine/core';
 import { UserButton } from '../UserButton/UserButton';
 import { useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import { useState } from 'react';
 
 const links = [
-  { icon: IconBulb, label: 'Home', notifications: 3, path: '/' },
+  { icon: IconHome, label: 'Home', notifications: 3, path: '/' },
   {
-    icon: IconCheckbox,
+    icon: IconBuildingStore,
     label: 'Products',
     notifications: 4,
     path: '/products',
   },
-  { icon: IconCheckbox, label: 'Cart', notifications: 4, path: '/cart' },
-  { icon: IconUser, label: 'Checkout', path: '/checkout' },
+  { icon: IconShoppingCart, label: 'Cart', notifications: 4, path: '/cart' },
+  { icon: IconShoppingCartCheck, label: 'Checkout', path: '/checkout' },
+  { icon: IconChartGridDots, label: 'Flow Editor', path: '/flow-editor' },
 ];
 
 const collections = [
@@ -46,13 +50,31 @@ const collections = [
 
 export function NavbarSearch() {
   const navigate = useNavigate();
-  const mainLinks = links.map((link) => (
-    <UnstyledButton
+  const [active, setActive] = useState<number>(0);
+  const mainLinks = links.map((link, index) => (
+    <NavLink
+      href="#required-for-focus"
       key={link.label}
-      className={'mainLink'}
-      onClick={() => navigate(link.path)}
-    >
-      <div className={'mainLinkInner'}>
+      label={link.label}
+      className="mainLink px-4"
+      active={index === active}
+      leftSection={
+        <link.icon size={20} className={'mainLinkIcon'} stroke={1.5} />
+      }
+      rightSection={
+        link.notifications && (
+          <Badge size="sm" variant="filled" className={'mainLinkBadge'}>
+            {link.notifications}
+          </Badge>
+        )
+      }
+      onClick={(e) => {
+        e.preventDefault();
+        navigate(link.path);
+        setActive(index);
+      }}
+    />
+    /* <div className={'mainLinkInner'}>
         <link.icon size={20} className={'mainLinkIcon'} stroke={1.5} />
         <span>{link.label}</span>
       </div>
@@ -61,7 +83,7 @@ export function NavbarSearch() {
           {link.notifications}
         </Badge>
       )}
-    </UnstyledButton>
+    </NavLink> */
   ));
 
   const collectionLinks = collections.map((collection) => (
@@ -78,27 +100,28 @@ export function NavbarSearch() {
   ));
 
   return (
-    <nav className="navbar">
+    <nav className="navbar flex flex-col">
       <div className="section">
         <UserButton />
       </div>
 
-      <TextInput
-        placeholder="Search"
-        size="xs"
-        leftSection={<IconSearch size={12} stroke={1.5} />}
-        rightSectionWidth={70}
-        rightSection={<Code className={'searchCode'}>Ctrl + K</Code>}
-        styles={{ section: { pointerEvents: 'none' } }}
-        mb="sm"
-      />
+      <div className="section">
+        <TextInput
+          placeholder="Search"
+          size="xs"
+          px="xs"
+          leftSection={<IconSearch size={12} stroke={1.5} />}
+          rightSectionWidth={70}
+          rightSection={<Code className={'searchCode'}>Ctrl + K</Code>}
+          styles={{ section: { pointerEvents: 'none' } }}
+        />
+      </div>
 
-      <div className='flex flex-col overflow-y-auto overflow-hidden'>
-        <div className="section">
+      <div className="section overflow-y-auto">
         <div className={'mainLinks'}>{mainLinks}</div>
       </div>
 
-      <div className="section">
+      <div className="section overflow-y-auto">
         <Group className={'collectionsHeader'} justify="space-between">
           <Text size="xs" fw={500} c="dimmed">
             Collections
@@ -110,7 +133,6 @@ export function NavbarSearch() {
           </Tooltip>
         </Group>
         <div className="collections">{collectionLinks}</div>
-      </div>
       </div>
     </nav>
   );

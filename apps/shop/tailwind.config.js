@@ -1,7 +1,6 @@
-const pluginMantine = require('@hpnzm/tailwind-plugin-mantine');
-const { theme } = require('./mantine-theme');
 const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
 const { join } = require('path');
+const baseConfig = require('../../tailwind.base');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,8 +11,9 @@ module.exports = {
     ),
     ...createGlobPatternsForDependencies(__dirname),
   ],
+  presets: [baseConfig],
   theme: {
     extend: {},
   },
-  plugins: [pluginMantine(theme)],
+  plugins: [],
 };

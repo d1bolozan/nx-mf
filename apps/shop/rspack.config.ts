@@ -11,10 +11,11 @@ import config from './module-federation.config';
 export default {
   output: {
     path: join(__dirname, '../../dist/apps/shop'),
-    publicPath: 'auto',
+    publicPath: 'http://localhost:4200/',
   },
   devServer: {
     port: 4200,
+    open: true,
     historyApiFallback: {
       index: '/index.html',
       disableDotRule: true,

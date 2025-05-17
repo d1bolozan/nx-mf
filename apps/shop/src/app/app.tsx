@@ -1,14 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import RemoteSuspense from './RemoteSuspense';
 import NxWelcome from './nx-welcome';
 import Layout from './Layout';
 
-import {Button} from '@mantine/core'
-
 const Products = React.lazy(() => import('products/Module'));
 const Cart = React.lazy(() => import('cart/Module'));
 const Checkout = React.lazy(() => import('checkout/Module'));
+const FlowEditor = React.lazy(() => import('flow_editor/Module'));
 
 export function App() {
   return (
@@ -21,7 +20,7 @@ export function App() {
           </RemoteSuspense>
         }
       >
-        <Route index element={<NxWelcome title='Welcome to home page' />} />
+        <Route index element={<NxWelcome title="Welcome to home page" />} />
         <Route
           path="/products"
           element={
@@ -43,6 +42,14 @@ export function App() {
           element={
             <RemoteSuspense>
               <Checkout />
+            </RemoteSuspense>
+          }
+        />
+        <Route
+          path="/flow-editor"
+          element={
+            <RemoteSuspense>
+              <FlowEditor />
             </RemoteSuspense>
           }
         />

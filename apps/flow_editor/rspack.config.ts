@@ -10,11 +10,11 @@ import config from './module-federation.config';
 
 export default {
   output: {
-    path: join(__dirname, '../../dist/apps/checkout'),
-    publicPath: 'http://localhost:4203/',
+    path: join(__dirname, '../../dist/apps/flow_editor'),
+    publicPath: 'http://localhost:4204/',
   },
   devServer: {
-    port: 4203,
+    port: 4204,
     headers: {
       'Access-Control-Allow-Origin': '*',
     },

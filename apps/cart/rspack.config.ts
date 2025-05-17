@@ -11,7 +11,7 @@ import config from './module-federation.config';
 export default {
   output: {
     path: join(__dirname, '../../dist/apps/cart'),
-    publicPath: 'auto',
+    publicPath: 'http://localhost:4202/',
   },
   devServer: {
     port: 4202,

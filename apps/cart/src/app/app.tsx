@@ -3,7 +3,7 @@ import '../styles.css';
 
 export function App() {
   return (
-    <div className='cart-flex cart-flex-col'>
+    <div className="flex flex-col">
       <NxWelcome title="cart" />
     </div>
   );

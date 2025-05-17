@@ -1,10 +1,10 @@
 import { IconChevronRight } from '@tabler/icons-react';
-import { Avatar, Group, Text, UnstyledButton } from '@mantine/core';
+import { Avatar, Box, Group, Text, UnstyledButton } from '@mantine/core';
 import './UserButton.css';
 
 export function UserButton() {
   return (
-    <UnstyledButton className="user">
+    <Box className="user">
       <Group>
         <Avatar
           src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
@@ -23,6 +23,6 @@ export function UserButton() {
 
         <IconChevronRight size={14} stroke={1.5} />
       </Group>
-    </UnstyledButton>
+    </Box>
   );
 }
