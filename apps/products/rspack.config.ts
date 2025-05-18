@@ -15,6 +15,7 @@ export default {
   },
   devServer: {
     port: 4201,
+    hot: process.env['NODE_ENV'] === 'production' ? false : true,
     headers: {
       'Access-Control-Allow-Origin': '*',
     },

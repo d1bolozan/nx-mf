@@ -28,7 +28,7 @@ const prodConfig: ModuleFederationConfig = {
    *   ['app2', 'http://example.com/path/to/app2/remoteEntry.js'],
    * ]
    */
-  remotes: [],
+  remotes: [['flow_editor', 'http://localhost:4204/']],
 };
 
 export default {
@@ -38,6 +38,7 @@ export default {
   },
   devServer: {
     port: 4200,
+    hot: false,
     historyApiFallback: {
       index: '/index.html',
       disableDotRule: true,

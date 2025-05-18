@@ -5,6 +5,12 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "preview": {
+      "options": {
+        "hot": false,
+        "verbose": true
+      }
+    },
     "serve": {
       "options": {
         "port": 4200
@@ -18,5 +24,12 @@
         "forwardAllArgs": false
       }
     }
-  }
+  },
+  "implicitDependencies": [
+    "cart",
+    "chat",
+    "checkout",
+    "flow_editor",
+    "products"
+  ]
 }

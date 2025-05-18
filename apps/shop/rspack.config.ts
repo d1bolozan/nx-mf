@@ -22,13 +22,6 @@ export default {
       htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
     },
   },
-  module: {
-    parser: {
-      'css/auto': {
-        namedExports: false,
-      },
-    },
-  },
   plugins: [
     new NxAppRspackPlugin({
       tsConfig: './tsconfig.app.json',

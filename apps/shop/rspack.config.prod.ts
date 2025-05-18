@@ -32,16 +32,19 @@ const prodConfig: ModuleFederationConfig = {
     ['products', 'http://localhost:4201/'],
     ['cart', 'http://localhost:4202/'],
     ['checkout', 'http://localhost:4203/'],
+    ['flow_editor', 'http://localhost:4204/'],
+    ['chat', 'http://localhost:4205/'],
   ],
 };
 
 export default {
   output: {
     path: join(__dirname, '../../dist/apps/shop'),
-    publicPath: 'auto',
+    publicPath: 'http://localhost:4200/',
   },
   devServer: {
     port: 4200,
+    hot: false,
     historyApiFallback: {
       index: '/index.html',
       disableDotRule: true,

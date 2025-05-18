@@ -19,5 +19,6 @@
         "forwardAllArgs": false
       }
     }
-  }
+  },
+  "implicitDependencies": ["flow_editor"]
 }
