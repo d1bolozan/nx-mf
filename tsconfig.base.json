@@ -16,10 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "cart/Module": ["apps/cart/src/remote-entry.ts"],
+      "chat/Module": ["apps/chat/src/remote-entry.ts"],
       "checkout/Module": ["apps/checkout/src/remote-entry.ts"],
       "flow_editor/Module": ["apps/flow_editor/src/remote-entry.ts"],
-      "products/Module": ["apps/products/src/remote-entry.ts"],
-      "chat/Module": ["apps/chat/src/remote-entry.ts"],
+      "products/Module": ["apps/products/src/remote-entry.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
