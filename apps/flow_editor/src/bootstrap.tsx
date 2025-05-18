@@ -14,7 +14,9 @@ root.render(
   <StrictMode>
     <BrowserRouter>
       <MantineProvider>
-        <App />
+        <div className="w-full h-screen overflow-hidden">
+          <App />
+        </div>
       </MantineProvider>
     </BrowserRouter>
   </StrictMode>

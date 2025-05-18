@@ -2,17 +2,21 @@ import { useRef, useState } from 'react';
 import StressFlow from '../components/StressFlow';
 import { useEffect } from 'react';
 import { debounce } from '../utils/debounce';
+import Loader from './Loader';
 
-export function App({ title }: { title: string }) {
+export function App() {
   const [width, setWidth] = useState<number>(600);
   const [height, setHeight] = useState<number>(600);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setIsLoading(true);
     if (containerRef.current) {
       const { width, height } = containerRef.current.getBoundingClientRect();
       setWidth(width);
       setHeight(height);
+      setTimeout(() => setIsLoading(false), 400);
     }
   }, []);
 
@@ -31,15 +35,19 @@ export function App({ title }: { title: string }) {
   }, []);
 
   return (
-    <div ref={containerRef}>
-      <div
-        style={{
-          width: width,
-          height: height,
-        }}
-      >
-        <StressFlow />
-      </div>
+    <div ref={containerRef} className="h-full">
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div
+          style={{
+            width: width,
+            height: height,
+          }}
+        >
+          <StressFlow />
+        </div>
+      )}
     </div>
   );
 }
