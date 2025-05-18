@@ -3,11 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import RemoteSuspense from './RemoteSuspense';
 import NxWelcome from './nx-welcome';
 import Layout from './Layout';
+import { Button } from '@mantine/core';
 
 const Products = React.lazy(() => import('products/Module'));
 const Cart = React.lazy(() => import('cart/Module'));
 const Checkout = React.lazy(() => import('checkout/Module'));
 const FlowEditor = React.lazy(() => import('flow_editor/Module'));
+const Chat = React.lazy(() => import('chat/Module'));
 
 export function App() {
   return (
@@ -50,6 +52,14 @@ export function App() {
           element={
             <RemoteSuspense>
               <FlowEditor />
+            </RemoteSuspense>
+          }
+        />
+        <Route
+          path="/chat"
+          element={
+            <RemoteSuspense>
+              <Chat />
             </RemoteSuspense>
           }
         />

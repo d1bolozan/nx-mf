@@ -2,6 +2,7 @@ import {
   IconBuildingStore,
   IconChartGridDots,
   IconHome,
+  IconMail,
   IconPlus,
   IconSearch,
   IconShoppingCart,
@@ -34,6 +35,7 @@ const links = [
   { icon: IconShoppingCart, label: 'Cart', notifications: 4, path: '/cart' },
   { icon: IconShoppingCartCheck, label: 'Checkout', path: '/checkout' },
   { icon: IconChartGridDots, label: 'Flow Editor', path: '/flow-editor' },
+  { icon: IconMail, label: 'Chat', path: '/chat' },
 ];
 
 const collections = [

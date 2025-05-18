@@ -10,6 +10,14 @@
         "port": 4203
       },
       "dependsOn": ["shop:serve"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["tsc -p tsconfig.app.json --noEmit"],
+        "cwd": "apps/checkout",
+        "forwardAllArgs": false
+      }
     }
   }
 }

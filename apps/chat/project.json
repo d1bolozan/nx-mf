@@ -1,13 +1,13 @@
 {
-  "name": "products",
+  "name": "chat",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/products/src",
+  "sourceRoot": "apps/chat/src",
   "projectType": "application",
   "tags": [],
   "targets": {
     "serve": {
       "options": {
-        "port": 4201
+        "port": 4205
       },
       "dependsOn": ["shop:serve"]
     },
@@ -15,7 +15,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": ["tsc -p tsconfig.app.json --noEmit"],
-        "cwd": "apps/products",
+        "cwd": "apps/chat",
         "forwardAllArgs": false
       }
     }
