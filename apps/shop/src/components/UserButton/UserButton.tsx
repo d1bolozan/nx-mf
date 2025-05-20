@@ -1,5 +1,5 @@
 import { IconChevronRight } from '@tabler/icons-react';
-import { Avatar, Box, Group, Text, UnstyledButton } from '@mantine/core';
+import { Avatar, Box, Group, Text } from '@mantine/core';
 import './UserButton.css';
 
 export function UserButton() {

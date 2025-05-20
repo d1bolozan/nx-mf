@@ -1,23 +1,25 @@
-"use client";
+'use client';
 
-import { FC, PropsWithChildren } from "react";
-import { ErrorBoundary as ReactErrorBoundary, FallbackProps,  } from "react-error-boundary";
+import { FC, PropsWithChildren } from 'react';
+import {
+  ErrorBoundary as ReactErrorBoundary,
+  FallbackProps,
+} from 'react-error-boundary';
+import { NothingFoundBackground } from '../components/404/NothingFound';
 
 function Fallback({ error, resetErrorBoundary }: FallbackProps) {
+  console.error(error.message);
 
   return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre style={{ color: "red" }}>{error.message}</pre>
-    </div>
+    <NothingFoundBackground resetErrorBoundary={() => resetErrorBoundary()} />
   );
 }
 
-
-const ErrorBoundary: FC<PropsWithChildren> = ({children}) => {
- return <ReactErrorBoundary FallbackComponent={Fallback}>
-  {children}
- </ReactErrorBoundary>
-}
+const ErrorBoundary: FC<PropsWithChildren> = ({ children }) => {
+  return (
+    <ReactErrorBoundary FallbackComponent={Fallback}>
+      {children}
+    </ReactErrorBoundary>
+  );
+};
 export default ErrorBoundary;
-

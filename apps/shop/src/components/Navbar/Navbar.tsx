@@ -20,9 +20,9 @@ import {
   Tooltip,
 } from '@mantine/core';
 import { UserButton } from '../UserButton/UserButton';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const links = [
   { icon: IconHome, label: 'Home', notifications: 3, path: '/' },
@@ -52,7 +52,21 @@ const collections = [
 
 export function NavbarSearch() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [active, setActive] = useState<number>(0);
+
+  useEffect(() => {
+    if (location.pathname) {
+      const indexOfCurrentPath = links.findIndex((link) =>
+        link.path.replace('/', '').includes(location.pathname.replace('/', ''))
+      );
+
+      if (indexOfCurrentPath >= 0) {
+        setActive(indexOfCurrentPath);
+      }
+    }
+  }, [location]);
+
   const mainLinks = links.map((link, index) => (
     <NavLink
       href="#required-for-focus"
@@ -76,16 +90,6 @@ export function NavbarSearch() {
         setActive(index);
       }}
     />
-    /* <div className={'mainLinkInner'}>
-        <link.icon size={20} className={'mainLinkIcon'} stroke={1.5} />
-        <span>{link.label}</span>
-      </div>
-      {link.notifications && (
-        <Badge size="sm" variant="filled" className={'mainLinkBadge'}>
-          {link.notifications}
-        </Badge>
-      )}
-    </NavLink> */
   ));
 
   const collectionLinks = collections.map((collection) => (
