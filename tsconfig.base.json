@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-mf/navigation": ["libs/navigation/src/index.ts"],
+      "@nx-mf/navigation-types": ["libs/navigation/src/types.ts"],
       "cart/Module": ["apps/cart/src/remote-entry.ts"],
       "chat/Module": ["apps/chat/src/remote-entry.ts"],
       "checkout/Module": ["apps/checkout/src/remote-entry.ts"],

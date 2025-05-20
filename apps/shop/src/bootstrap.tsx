@@ -6,16 +6,17 @@ import { MantineProvider } from '@mantine/core';
 
 import '@mantine/core/styles.css';
 import './styles.css';
+import { NavigationProvider } from '@nx-mf/navigation';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <StrictMode>
-    <BrowserRouter>
-      <MantineProvider>
+    <MantineProvider>
+      <NavigationProvider>
         <App />
-      </MantineProvider>
-    </BrowserRouter>
+      </NavigationProvider>
+    </MantineProvider>
   </StrictMode>
 );
