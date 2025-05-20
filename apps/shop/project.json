@@ -5,10 +5,44 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "preview": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
-        "hot": false,
-        "verbose": true
+        "compiler": "babel",
+        "outputPath": "dist/apps/shop",
+        "index": "apps/shop/public/index.html",
+        "baseHref": "/",
+        "main": "apps/shop/src/main.ts",
+        "tsConfig": "apps/shop/tsconfig.app.json",
+        "assets": ["apps/shop/src/favicon.ico", "apps/shop/src/assets"],
+        "styles": ["apps/shop/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/shop/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/shop/src/environments/environment.ts",
+              "with": "apps/shop/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/shop/webpack.config.prod.ts"
+        }
       }
     },
     "serve": {

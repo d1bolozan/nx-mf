@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
+  Navigate,
   RouteObject,
   RouterProvider,
   createBrowserRouter,
@@ -9,6 +10,7 @@ import NxWelcome from './nx-welcome';
 import Layout from './Layout';
 import { useNavigation } from '@nx-mf/navigation';
 import Loader from './Loader';
+import { NothingFoundBackground } from '../components/404/NothingFound';
 /**
  * TODO: Inspect why types cannot be exported from the `@nx-mf/navigation` library.
  *
@@ -34,6 +36,16 @@ const FlowEditor = React.lazy(() => import('flow_editor/Module'));
 const Chat = React.lazy(() => import('chat/Module'));
 
 const staticRoutes = [
+  {
+    path: '*',
+    element: <Navigate to="/404" replace={true} />,
+    label: '',
+  },
+  {
+    path: '/404',
+    element: <NothingFoundBackground />,
+    label: '',
+  },
   {
     path: '/',
     element: <Layout />,

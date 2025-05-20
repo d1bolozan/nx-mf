@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './app/app';
 import { MantineProvider } from '@mantine/core';
 
-import '@mantine/core/styles.css';
 import './styles.css';
 import { NavigationProvider } from '@nx-mf/navigation';
 
