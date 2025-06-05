@@ -37,18 +37,8 @@
         "watchDepsTargetName": "watch-deps"
       }
     },
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      }
-    },
-    {
-      "plugin": "@nx/jest/plugin",
-      "options": {
-        "targetName": "test"
-      }
-    },
+    { "plugin": "@nx/eslint/plugin", "options": { "targetName": "lint" } },
+    { "plugin": "@nx/jest/plugin", "options": { "targetName": "test" } },
     {
       "plugin": "@nx/vite/plugin",
       "options": {
@@ -72,9 +62,7 @@
         "linter": "eslint",
         "bundler": "rspack"
       },
-      "component": {
-        "style": "tailwind"
-      },
+      "component": { "style": "tailwind" },
       "library": {
         "style": "tailwind",
         "linter": "eslint",
@@ -84,13 +72,7 @@
   },
   "targetDefaults": {
     "@nx/rspack:rspack": {
-      "inputs": [
-        "production",
-        "^production",
-        {
-          "env": "NX_MF_DEV_REMOTES"
-        }
-      ],
+      "inputs": ["production", "^production", { "env": "NX_MF_DEV_REMOTES" }],
       "dependsOn": ["^build"],
       "cache": true
     },
@@ -115,5 +97,6 @@
     "version": {
       "currentVersionResolver": "disk"
     }
-  }
+  },
+  "nxCloudId": "682afdce35fd28a16a879aed"
 }
