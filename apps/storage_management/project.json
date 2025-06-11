@@ -1,0 +1,16 @@
+{
+  "name": "storage_management",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/storage_management/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "targets": {
+    "serve": {
+      "options": {
+        "port": 4207
+      }
+    }
+  }
+  }
+}

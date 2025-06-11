@@ -1,87 +1,93 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import {
-  Navigate,
-  RouteObject,
-  RouterProvider,
-  createBrowserRouter,
-} from 'react-router-dom';
-import RemoteSuspense from './RemoteSuspense';
-import NxWelcome from './nx-welcome';
-import Layout from './Layout';
-import { useNavigation, type IRoute } from '@nx-mf/navigation';
-import Loader from './Loader';
-import { NothingFoundBackground } from '../components/404/NothingFound';
+import { type IRoute, useNavigation } from "@nx-mf/navigation";
+import React, { useEffect } from "react";
+import { createBrowserRouter, Navigate, RouteObject, RouterProvider } from "react-router-dom";
 
-const Products = React.lazy(() => import('products/Module'));
-const Cart = React.lazy(() => import('cart/Module'));
-const Checkout = React.lazy(() => import('checkout/Module'));
-const FlowEditor = React.lazy(() => import('flow_editor/Module'));
-const Chat = React.lazy(() => import('chat/Module'));
+import { NothingFoundBackground } from "../components/404/NothingFound";
+import Home from "./Home";
+import Layout from "./Layout";
+import Loader from "./Loader";
+import RemoteSuspense from "./RemoteSuspense";
+
+const Products = React.lazy(() => import("products/Module"));
+const Cart = React.lazy(() => import("cart/Module"));
+const Checkout = React.lazy(() => import("checkout/Module"));
+const FlowEditor = React.lazy(() => import("flow_editor/Module"));
+const Chat = React.lazy(() => import("chat/Module"));
+const StorageManagement = React.lazy(() => import("storage_management/Module"));
 
 const staticRoutes: IRoute[] = [
   {
-    path: '*',
+    path: "*",
     element: <Navigate to="/404" replace={true} />,
-    label: '',
+    label: ""
   },
   {
-    path: '/404',
+    path: "/404",
     element: <NothingFoundBackground />,
-    label: '',
+    label: ""
   },
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
-    label: '',
+    label: "",
     children: [
-      { label: '', path: '', element: <NxWelcome title="shop" /> },
+      { label: "", path: "", element: <Home /> },
       {
-        label: '',
-        path: 'products/*',
+        label: "",
+        path: "products/*",
         element: (
           <RemoteSuspense>
             <Products />
           </RemoteSuspense>
-        ),
+        )
       },
       {
-        label: '',
-        path: 'cart/*',
+        label: "",
+        path: "cart/*",
         element: (
           <RemoteSuspense>
             <Cart />
           </RemoteSuspense>
-        ),
+        )
       },
       {
-        label: '',
-        path: 'checkout/*',
+        label: "",
+        path: "checkout/*",
         element: (
           <RemoteSuspense>
             <Checkout />
           </RemoteSuspense>
-        ),
+        )
       },
       {
-        label: '',
-        path: 'flow-editor/*',
+        label: "",
+        path: "flow-editor/*",
         element: (
           <RemoteSuspense>
             <FlowEditor />
           </RemoteSuspense>
-        ),
+        )
       },
       {
-        label: '',
-        path: 'chat/*',
+        label: "",
+        path: "chat/*",
         element: (
           <RemoteSuspense>
             <Chat />
           </RemoteSuspense>
-        ),
+        )
       },
-    ],
-  },
+      {
+        label: "",
+        path: "storage-management/*",
+        element: (
+          <RemoteSuspense>
+            <StorageManagement />
+          </RemoteSuspense>
+        )
+      }
+    ]
+  }
 ];
 
 const handleCreateRouter = (routes: IRoute[]): RouteObject[] => {
@@ -89,10 +95,7 @@ const handleCreateRouter = (routes: IRoute[]): RouteObject[] => {
   return routes.map(({ element, path, children }: any) => ({
     path,
     element,
-    children:
-      children && children.length > 0
-        ? handleCreateRouter(children)
-        : undefined,
+    children: children && children.length > 0 ? handleCreateRouter(children) : undefined
   }));
 };
 
@@ -108,11 +111,7 @@ export function App() {
   }
 
   return (
-    routes.length > 0 && (
-      <RouterProvider
-        router={createBrowserRouter(handleCreateRouter(routes))}
-      />
-    )
+    routes.length > 0 && <RouterProvider router={createBrowserRouter(handleCreateRouter(routes))} />
   );
 }
 

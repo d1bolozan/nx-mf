@@ -1,13 +1,12 @@
-import { NxAppRspackPlugin } from '@nx/rspack/app-plugin';
-import { NxReactRspackPlugin } from '@nx/rspack/react-plugin';
+import { ModuleFederationConfig } from "@nx/module-federation";
 import {
-  NxModuleFederationPlugin,
   NxModuleFederationDevServerPlugin,
-} from '@nx/module-federation/rspack';
-import { ModuleFederationConfig } from '@nx/module-federation';
-import { join } from 'path';
+  NxModuleFederationPlugin} from "@nx/module-federation/rspack";
+import { NxAppRspackPlugin } from "@nx/rspack/app-plugin";
+import { NxReactRspackPlugin } from "@nx/rspack/react-plugin";
+import { join } from "path";
 
-import baseConfig from './module-federation.config';
+import baseConfig from "./module-federation.config";
 
 const prodConfig: ModuleFederationConfig = {
   ...baseConfig,
@@ -29,38 +28,40 @@ const prodConfig: ModuleFederationConfig = {
    * ]
    */
   remotes: [
-    ['products', 'http://localhost:4201/'],
-    ['cart', 'http://localhost:4202/'],
-    ['checkout', 'http://localhost:4203/'],
-    ['flow_editor', 'http://localhost:4204/'],
-    ['chat', 'http://localhost:4205/'],
-  ],
+    ["products", "http://localhost:4201/"],
+    ["cart", "http://localhost:4202/"],
+    ["checkout", "http://localhost:4203/"],
+    ["flow_editor", "http://localhost:4204/"],
+    ["chat", "http://localhost:4205/"],
+    ["mdt_commons", "http://localhost:4206/"],
+    ["storage_management", "http://localhost:4207/"]
+  ]
 };
 
 export default {
   output: {
-    path: join(__dirname, '../../dist/apps/shop'),
-    publicPath: 'http://localhost:4200/',
+    path: join(__dirname, "../../dist/apps/shop"),
+    publicPath: "http://localhost:4200/"
   },
   devServer: {
     port: 4200,
     hot: false,
     historyApiFallback: {
-      index: '/index.html',
+      index: "/index.html",
       disableDotRule: true,
-      htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
-    },
+      htmlAcceptHeaders: ["text/html", "application/xhtml+xml"]
+    }
   },
   plugins: [
     new NxAppRspackPlugin({
-      tsConfig: './tsconfig.app.json',
-      main: './src/main.ts',
-      index: './public/index.html',
-      baseHref: '/',
-      assets: ['./src/favicon.ico', './src/assets'],
-      styles: ['./src/styles.css'],
-      outputHashing: process.env['NODE_ENV'] === 'production' ? 'all' : 'none',
-      optimization: process.env['NODE_ENV'] === 'production',
+      tsConfig: "./tsconfig.app.json",
+      main: "./src/main.ts",
+      index: "./public/index.html",
+      baseHref: "/",
+      assets: ["./src/favicon.ico", "./src/assets"],
+      styles: ["./src/styles.css"],
+      outputHashing: process.env["NODE_ENV"] === "production" ? "all" : "none",
+      optimization: process.env["NODE_ENV"] === "production"
     }),
     new NxReactRspackPlugin({
       // Uncomment this line if you don't want to use SVGR
@@ -68,6 +69,6 @@ export default {
       // svgr: false
     }),
     new NxModuleFederationPlugin({ config: prodConfig }, { dts: false }),
-    new NxModuleFederationDevServerPlugin({ config: prodConfig }),
-  ],
+    new NxModuleFederationDevServerPlugin({ config: prodConfig })
+  ]
 };

@@ -1,13 +1,5 @@
-import {
-  IconBuildingStore,
-  IconChartGridDots,
-  IconHome,
-  IconMail,
-  IconPlus,
-  IconSearch,
-  IconShoppingCart,
-  IconShoppingCartCheck,
-} from '@tabler/icons-react';
+import './Navbar.css';
+
 import {
   ActionIcon,
   Badge,
@@ -19,10 +11,21 @@ import {
   TextInput,
   Tooltip,
 } from '@mantine/core';
-import { UserButton } from '../UserButton/UserButton';
-import { useLocation, useNavigate } from 'react-router-dom';
-import './Navbar.css';
+import {
+  IconBuildingStore,
+  IconChartGridDots,
+  IconDatabase,
+  IconHome,
+  IconMail,
+  IconPlus,
+  IconSearch,
+  IconShoppingCart,
+  IconShoppingCartCheck,
+} from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { UserButton } from '../UserButton/UserButton';
 
 const links = [
   { icon: IconHome, label: 'Home', notifications: 3, path: '/' },
@@ -36,6 +39,7 @@ const links = [
   { icon: IconShoppingCartCheck, label: 'Checkout', path: '/checkout' },
   { icon: IconChartGridDots, label: 'Flow Editor', path: '/flow-editor' },
   { icon: IconMail, label: 'Chat', path: '/chat' },
+  { icon: IconDatabase, label: 'Storage Management', path: '/storage-management' },
 ];
 
 const collections = [

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
-import StressFlow from '../components/StressFlow';
 import { useEffect } from 'react';
+
+import StressFlow from '../components/StressFlow';
 import { debounce } from '../utils/debounce';
 import Loader from './Loader';
 

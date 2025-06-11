@@ -64,6 +64,7 @@
     "chat",
     "checkout",
     "flow_editor",
-    "products"
+    "products",
+    "storage_management"
   ]
 }

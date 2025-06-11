@@ -1,17 +1,18 @@
-import React, { useCallback } from 'react';
-import {
-  ReactFlow,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-  MiniMap,
-  Controls,
-  Background,
-  Panel,
-  OnConnect,
-} from '@xyflow/react';
-
 import '@xyflow/react/dist/style.css';
+
+import {
+  addEdge,
+  Background,
+  Controls,
+  MiniMap,
+  OnConnect,
+  Panel,
+  ReactFlow,
+  useEdgesState,
+  useNodesState,
+} from '@xyflow/react';
+import React, { useCallback } from 'react';
+
 import { initialElements } from '../utils/initialElements';
 
 const { nodes: initialNodes, edges: initialEdges } = initialElements(15, 30);

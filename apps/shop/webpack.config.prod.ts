@@ -30,6 +30,7 @@ const prodConfig: ModuleFederationConfig = {
     ['checkout', 'http://localhost:4203/'],
     ['flow_editor', 'http://localhost:4204/'],
     ['chat', 'http://localhost:4205/'],
+    ['storage_management', 'http://localhost:8892/'],
   ],
 };
 

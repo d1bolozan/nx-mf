@@ -1,0 +1,35 @@
+export default interface IQueue {
+  ID: number;
+  ClericalTime: number;
+  DefaultCC: number;
+  ForceAvailable: number;
+  MultipleCC: number;
+  Name: string;
+  PActive: number;
+  Visible: number;
+  Binded: number;
+  AllowManualCalls: number;
+  SL: number;
+  AgFree: number;
+  AgBusy: number;
+  AgClerical: number;
+  ClinQueue: number;
+  ClinIVR: number;
+  CltoAgents: number;
+  CltoExternal: number;
+  ClOnHold: number;
+  WaitTime: number;
+  AbandonTime: number;
+  MaxWaitTime: number;
+  PLevel: number;
+  PVolume: number;
+  PTotalCalls: number;
+  PNotConnected: number;
+  PClosed: number;
+  PClosedIVR: number;
+  PConnected: number;
+  PPending: number;
+  PRinging: number;
+  PToAgents: number;
+  PClients: number;
+}

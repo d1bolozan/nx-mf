@@ -1,10 +1,11 @@
+import './styles.css';
+
+import { MantineProvider } from '@mantine/core';
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './app/app';
-import { MantineProvider } from '@mantine/core';
 
-import './styles.css';
+import App from './app/app';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

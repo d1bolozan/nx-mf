@@ -1,0 +1,41 @@
+@import "../../../global.styles.css";
+/* You can add global styles to this file, and also import other style files */
+
+.p-button-icon-only {
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rhap_volume-button {
+  color: var(--mdt-web-primary-color) !important;
+}
+.rhap_volume-indicator {
+  background: var(--mdt-web-primary-color) !important;
+}
+.rhap_progress-indicator {
+  background: var(--mdt-web-primary-color) !important;
+}
+.rhap_progress-filled {
+  background: var(--mdt-web-primary-color) !important;
+}
+.rhap_repeat-button {
+  color: var(--mdt-web-primary-color) !important;
+}
+
+.rhap_progress-section {
+  padding-top: 0.5rem;
+}
+
+.rhap_main-controls-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mdt-web-primary-color) !important;
+}
